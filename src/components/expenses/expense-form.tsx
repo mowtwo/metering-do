@@ -119,7 +119,7 @@ export function ExpenseForm({
             {editingExpense ? "编辑费用记录" : "添加费用记录"}
           </SheetTitle>
         </SheetHeader>
-        <form onSubmit={handleSubmit} className="space-y-4 py-4">
+        <form onSubmit={handleSubmit} className="space-y-4 px-4 py-4">
           {/* Type */}
           {!editingExpense && (
             <div>
@@ -233,7 +233,7 @@ export function ExpenseForm({
             />
           </div>
 
-          <SheetFooter className="gap-2 sm:gap-0">
+          <SheetFooter className="gap-2 px-0 sm:gap-0">
             <Button
               type="button"
               variant="outline"

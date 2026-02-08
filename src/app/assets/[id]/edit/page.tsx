@@ -10,7 +10,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CategoryPicker } from "@/components/categories/category-picker";
 import { useAsset, useAssets } from "@/hooks/use-assets";
+import { useExpenses } from "@/hooks/use-expenses";
 import { toast } from "sonner";
+import { format } from "date-fns";
 
 export default function EditAssetPage({
   params,
@@ -21,6 +23,9 @@ export default function EditAssetPage({
   const router = useRouter();
   const asset = useAsset(id);
   const { updateAsset } = useAssets();
+  const { expenses, updateExpense } = useExpenses(id);
+
+  const initialExpense = expenses?.find((e) => e.type === "initial") ?? null;
 
   if (asset === undefined) {
     return (
@@ -47,8 +52,17 @@ export default function EditAssetPage({
       <div className="mx-auto max-w-lg p-4">
         <EditForm
           initialData={asset}
+          initialExpenseDate={initialExpense?.date ?? null}
           onSubmit={async (data) => {
-            await updateAsset(id, data);
+            await updateAsset(id, {
+              name: data.name,
+              categoryId: data.categoryId,
+              subcategoryId: data.subcategoryId,
+              notes: data.notes,
+            });
+            if (data.purchaseDate && initialExpense) {
+              await updateExpense(initialExpense.id, { date: data.purchaseDate });
+            }
             toast.success("资产已更新");
             router.push(`/assets/${id}`);
           }}
@@ -60,6 +74,7 @@ export default function EditAssetPage({
 
 function EditForm({
   initialData,
+  initialExpenseDate,
   onSubmit,
 }: {
   initialData: {
@@ -68,11 +83,13 @@ function EditForm({
     subcategoryId: string | null;
     notes: string;
   };
+  initialExpenseDate: Date | null;
   onSubmit: (data: {
     name: string;
     categoryId: string;
     subcategoryId: string | null;
     notes: string;
+    purchaseDate?: Date;
   }) => void;
 }) {
   const [name, setName] = useState(initialData.name);
@@ -81,6 +98,9 @@ function EditForm({
     initialData.subcategoryId
   );
   const [notes, setNotes] = useState(initialData.notes);
+  const [purchaseDate, setPurchaseDate] = useState(
+    initialExpenseDate ? format(initialExpenseDate, "yyyy-MM-dd") : ""
+  );
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -90,6 +110,7 @@ function EditForm({
       categoryId,
       subcategoryId,
       notes: notes.trim(),
+      purchaseDate: purchaseDate ? new Date(purchaseDate) : undefined,
     });
   }
 
@@ -111,6 +132,18 @@ function EditForm({
         onCategoryChange={setCategoryId}
         onSubcategoryChange={setSubcategoryId}
       />
+
+      {initialExpenseDate && (
+        <div>
+          <Label htmlFor="purchase-date" className="mb-2 block">购入日期</Label>
+          <Input
+            id="purchase-date"
+            type="date"
+            value={purchaseDate}
+            onChange={(e) => setPurchaseDate(e.target.value)}
+          />
+        </div>
+      )}
 
       <div>
         <Label htmlFor="asset-notes" className="mb-2 block">备注</Label>
