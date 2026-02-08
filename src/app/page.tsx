@@ -11,6 +11,7 @@ import { AssetList } from "@/components/assets/asset-list";
 import { SearchBar } from "@/components/search/search-bar";
 import { SortSelector } from "@/components/search/sort-selector";
 import { ViewToggle } from "@/components/search/view-toggle";
+import { ShareTotalButton } from "@/components/share/share-total-button";
 import { useAssetSearch } from "@/hooks/use-search";
 import type { AssetWithStats, SortField, SortDirection, ViewMode } from "@/types";
 
@@ -165,6 +166,7 @@ export default function HomePage() {
             onDirectionToggle={handleSortDirectionToggle}
           />
           <ViewToggle mode={viewMode} onChange={handleViewModeChange} />
+          <ShareTotalButton assets={assetsWithStats} summary={globalSummary} />
         </div>
 
         {/* Asset List */}

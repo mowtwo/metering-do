@@ -23,6 +23,7 @@ import { useExpenses } from "@/hooks/use-expenses";
 import { useAssetStats } from "@/hooks/use-asset-stats";
 import { useCategories } from "@/hooks/use-categories";
 import { formatCurrency, formatDays, formatDate } from "@/lib/format";
+import { ShareAssetButton } from "@/components/share/share-asset-button";
 import { toast } from "sonner";
 
 export default function AssetDetailPage({
@@ -78,6 +79,16 @@ export default function AssetDetailPage({
         showBack
         actions={
           <div className="flex gap-2">
+            {stats && (
+              <ShareAssetButton
+                name={asset.name}
+                categoryEmoji={category?.emoji ?? "📦"}
+                categoryName={category?.name ?? "未分类"}
+                subcategoryName={subcategory?.name ?? null}
+                notes={asset.notes}
+                stats={stats}
+              />
+            )}
             <Button
               variant="outline"
               size="sm"
