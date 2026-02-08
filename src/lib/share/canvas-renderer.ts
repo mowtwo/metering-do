@@ -107,6 +107,31 @@ export function drawText(
   }
 }
 
+/**
+ * Draw an emoji centered within a fixed-size box.
+ * Uses textBaseline="alphabetic" with a calculated baseline offset
+ * to ensure all emoji glyphs align consistently regardless of their
+ * individual glyph metrics.
+ */
+export function drawEmoji(
+  ctx: CanvasRenderingContext2D,
+  emoji: string,
+  x: number,
+  y: number,
+  boxSize: number,
+  fontSize: number,
+) {
+  ctx.save();
+  ctx.font = `${fontSize}px ${EMOJI_FONT}`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(emoji, x + boxSize / 2, y + boxSize / 2);
+  ctx.restore();
+}
+
+const EMOJI_FONT =
+  '"Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Twemoji Mozilla", sans-serif';
+
 export function measureText(
   ctx: CanvasRenderingContext2D,
   text: string,
