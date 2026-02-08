@@ -8,6 +8,7 @@ import {
   drawHeader,
   drawFooter,
   drawText,
+  drawEmoji,
 } from "./canvas-renderer";
 
 const W = 720;
@@ -54,10 +55,9 @@ export async function renderAssetShareImage(
   // Asset info section
   y += 16;
 
-  // Emoji
-  ctx.font = `40px ${p.bodyFont}`;
-  ctx.textBaseline = "top";
-  ctx.fillText(data.categoryEmoji, PADDING + 8, y + 8);
+  // Emoji — centered in a fixed 48×48 box for consistent alignment
+  const emojiBoxSize = 48;
+  drawEmoji(ctx, data.categoryEmoji, PADDING + 4, y + 8, emojiBoxSize, 36);
 
   // Name
   drawText(ctx, data.name, PADDING + 64, y + 8, {
