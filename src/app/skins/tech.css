@@ -215,10 +215,6 @@
 }
 
 /* ---------- Sidebar: gradient accent line (dark) ---------- */
-[data-skin="tech"] aside {
-  position: relative;
-}
-
 [data-skin="tech"].dark aside::after {
   content: "";
   position: absolute;
