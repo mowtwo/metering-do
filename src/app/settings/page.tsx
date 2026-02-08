@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { ExportButton } from "@/components/data/export-button";
 import { ImportDialog } from "@/components/data/import-dialog";
+import { CloudSyncCard } from "@/components/settings/cloud-sync-card";
 import { SkinPicker } from "@/components/settings/skin-picker";
 import { db } from "@/lib/db";
 import { toast } from "sonner";
@@ -40,6 +41,8 @@ export default function SettingsPage() {
     <AppShell>
       <PageHeader title="设置" />
       <div className="mx-auto max-w-lg space-y-4 p-4">
+        <CloudSyncCard />
+
         <Card>
           <CardHeader>
             <CardTitle className="text-base">数据管理</CardTitle>

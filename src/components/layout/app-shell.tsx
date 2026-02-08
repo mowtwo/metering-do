@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { NavBar } from "./nav-bar";
 import { DbInitializer } from "@/components/db-initializer";
+import { useAuth } from "@/hooks/use-auth";
+import { UserAvatar } from "@/components/auth/user-avatar";
 
 interface AppShellProps {
   children: React.ReactNode;
@@ -42,6 +44,7 @@ const navItems = [
 
 function DesktopNav() {
   const pathname = usePathname();
+  const { user, isLoggedIn } = useAuth();
 
   return (
     <div className="flex h-full flex-col">
@@ -72,6 +75,17 @@ function DesktopNav() {
           );
         })}
       </nav>
+      {isLoggedIn && user && (
+        <div className="border-t p-3">
+          <Link
+            href="/settings"
+            className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
+            <UserAvatar user={user} size="sm" />
+            <span className="truncate">{user.name || user.login}</span>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
