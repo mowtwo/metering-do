@@ -22,6 +22,7 @@ import { CloudSyncCard } from "@/components/settings/cloud-sync-card";
 import { SkinPicker } from "@/components/settings/skin-picker";
 import { db } from "@/lib/db";
 import { toast } from "sonner";
+import { Github, ExternalLink } from "lucide-react";
 
 export default function SettingsPage() {
   const [showClearConfirm, setShowClearConfirm] = useState(false);
@@ -59,10 +60,35 @@ export default function SettingsPage() {
           <CardHeader>
             <CardTitle className="text-base">关于</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground space-y-1">
-            <p>Metering Do 个人资产费用追踪</p>
-            <p>所有数据存储在浏览器本地 (IndexedDB)</p>
-            <p>版本 1.0.0</p>
+          <CardContent className="text-sm text-muted-foreground space-y-3">
+            <div className="space-y-1">
+              <p>Metering Do 个人资产费用追踪</p>
+              <p>所有数据存储在浏览器本地 (IndexedDB)</p>
+              <p>版本 1.0.0</p>
+            </div>
+
+            <Separator />
+
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-base">🤖</span>
+                <span>Vibe Coding By <strong className="text-foreground">Claude Code</strong></span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-base">▲</span>
+                <span>Deploy By <strong className="text-foreground">Vercel</strong></span>
+              </div>
+              <a
+                href="https://github.com/mowtwo/metering-do"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 transition-colors hover:text-foreground"
+              >
+                <Github className="h-4 w-4" />
+                <span>mowtwo/metering-do</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </div>
           </CardContent>
         </Card>
 
