@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/use-auth";
+import { UserAvatar } from "@/components/auth/user-avatar";
 
 const navItems = [
   { href: "/", label: "首页", icon: "🏠" },
@@ -13,6 +15,7 @@ const navItems = [
 
 export function NavBar() {
   const pathname = usePathname();
+  const { user, isLoggedIn } = useAuth();
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:hidden">
@@ -22,6 +25,7 @@ export function NavBar() {
             item.href === "/"
               ? pathname === "/"
               : pathname.startsWith(item.href);
+          const isSettings = item.href === "/settings";
           return (
             <Link
               key={item.href}
@@ -33,7 +37,11 @@ export function NavBar() {
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
-              <span className="text-xl">{item.icon}</span>
+              {isSettings && isLoggedIn && user ? (
+                <UserAvatar user={user} size="sm" />
+              ) : (
+                <span className="text-xl">{item.icon}</span>
+              )}
               <span>{item.label}</span>
             </Link>
           );
