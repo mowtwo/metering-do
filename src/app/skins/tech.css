@@ -1,0 +1,276 @@
+/* ====== TECH / CYBER SKIN ====== */
+/* Futuristic: neon glow, grid patterns, frosted glass, monospace accents */
+
+/* ---------- Light mode variables (metallic blue-gray tone) ---------- */
+[data-skin="tech"] {
+  --radius: 0.25rem;
+  --background: oklch(0.96 0.01 240);
+  --foreground: oklch(0.15 0.02 240);
+  --card: oklch(0.98 0.005 240);
+  --card-foreground: oklch(0.15 0.02 240);
+  --popover: oklch(0.98 0.005 240);
+  --popover-foreground: oklch(0.15 0.02 240);
+  --primary: oklch(0.45 0.18 240);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.92 0.01 240);
+  --secondary-foreground: oklch(0.2 0.02 240);
+  --muted: oklch(0.92 0.008 240);
+  --muted-foreground: oklch(0.5 0.03 240);
+  --accent: oklch(0.55 0.2 300);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.55 0.22 25);
+  --border: oklch(0.45 0.18 240 / 25%);
+  --input: oklch(0.45 0.18 240 / 20%);
+  --ring: oklch(0.45 0.18 240);
+  --sidebar: oklch(0.97 0.008 240);
+  --sidebar-foreground: oklch(0.15 0.02 240);
+  --sidebar-primary: oklch(0.45 0.18 240);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.45 0.18 240 / 8%);
+  --sidebar-accent-foreground: oklch(0.15 0.02 240);
+  --sidebar-border: oklch(0.45 0.18 240 / 20%);
+  --chart-1: oklch(0.45 0.18 240);
+  --chart-2: oklch(0.55 0.2 300);
+  --chart-3: oklch(0.6 0.18 160);
+  --chart-4: oklch(0.65 0.15 60);
+  --chart-5: oklch(0.5 0.18 280);
+}
+
+/* ---------- Dark mode variables (deep blue-black, neon cyan/magenta) ---------- */
+/* data-skin and .dark are both on <html>, so use compound selector */
+[data-skin="tech"].dark {
+  --background: oklch(0.08 0.02 260);
+  --foreground: oklch(0.9 0.03 200);
+  --card: oklch(0.12 0.025 260);
+  --card-foreground: oklch(0.9 0.03 200);
+  --popover: oklch(0.12 0.025 260);
+  --popover-foreground: oklch(0.9 0.03 200);
+  --primary: oklch(0.72 0.2 180);
+  --primary-foreground: oklch(0.05 0.02 260);
+  --secondary: oklch(0.18 0.02 260);
+  --secondary-foreground: oklch(0.85 0.03 200);
+  --muted: oklch(0.18 0.015 260);
+  --muted-foreground: oklch(0.55 0.04 200);
+  --accent: oklch(0.65 0.25 320);
+  --accent-foreground: oklch(0.05 0.02 260);
+  --destructive: oklch(0.6 0.25 25);
+  --border: oklch(0.72 0.2 180 / 30%);
+  --input: oklch(0.72 0.2 180 / 20%);
+  --ring: oklch(0.72 0.2 180);
+  --sidebar: oklch(0.08 0.02 260);
+  --sidebar-foreground: oklch(0.9 0.03 200);
+  --sidebar-primary: oklch(0.72 0.2 180);
+  --sidebar-primary-foreground: oklch(0.05 0.02 260);
+  --sidebar-accent: oklch(0.72 0.2 180 / 10%);
+  --sidebar-accent-foreground: oklch(0.9 0.03 200);
+  --sidebar-border: oklch(0.72 0.2 180 / 20%);
+  --chart-1: oklch(0.72 0.2 180);
+  --chart-2: oklch(0.65 0.25 320);
+  --chart-3: oklch(0.7 0.2 140);
+  --chart-4: oklch(0.75 0.15 60);
+  --chart-5: oklch(0.6 0.2 280);
+}
+
+/* ---------- Monospace font for headings & numbers ---------- */
+[data-skin="tech"] h1,
+[data-skin="tech"] [data-slot="card-title"],
+[data-skin="tech"] [data-slot="sheet-title"],
+[data-skin="tech"] [data-slot="dialog-title"],
+[data-skin="tech"] [data-slot="alert-dialog-title"] {
+  font-family: var(--font-geist-mono), monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+[data-skin="tech"] .font-bold,
+[data-skin="tech"] .font-semibold {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+/* ---------- Grid background (light mode is default) ---------- */
+[data-skin="tech"] body {
+  background-image:
+    linear-gradient(oklch(0.45 0.18 240 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.45 0.18 240 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: -1px -1px;
+}
+
+/* ---------- Grid background (dark mode) ---------- */
+[data-skin="tech"].dark body {
+  background-image:
+    linear-gradient(oklch(0.72 0.2 180 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.72 0.2 180 / 4%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: -1px -1px;
+}
+
+/* ---------- Cards: glowing border + frosted glass ---------- */
+[data-skin="tech"] [data-slot="card"] {
+  border: 1px solid var(--border);
+  box-shadow: 0 0 8px oklch(0.45 0.18 240 / 10%);
+  border-radius: 0.25rem;
+  backdrop-filter: blur(8px);
+}
+
+[data-skin="tech"].dark [data-slot="card"] {
+  box-shadow:
+    0 0 8px oklch(0.72 0.2 180 / 15%),
+    inset 0 1px 0 oklch(0.72 0.2 180 / 10%);
+  background: oklch(0.12 0.025 260 / 80%);
+}
+
+/* ---------- Buttons: gradient + glow (default variant) ---------- */
+[data-skin="tech"] [data-slot="button"][data-variant="default"] {
+  font-family: var(--font-geist-mono), monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+[data-skin="tech"].dark [data-slot="button"][data-variant="default"] {
+  background: linear-gradient(135deg, oklch(0.72 0.2 180), oklch(0.6 0.22 200));
+  border: 1px solid oklch(0.72 0.2 180 / 50%);
+  box-shadow: 0 0 12px oklch(0.72 0.2 180 / 30%);
+  color: oklch(0.05 0.02 260);
+}
+
+[data-skin="tech"].dark [data-slot="button"][data-variant="default"]:hover {
+  box-shadow: 0 0 20px oklch(0.72 0.2 180 / 50%);
+}
+
+/* Outline buttons: neon border (dark) */
+[data-skin="tech"].dark [data-slot="button"][data-variant="outline"] {
+  border: 1px solid oklch(0.72 0.2 180 / 40%);
+  color: oklch(0.72 0.2 180);
+}
+
+[data-skin="tech"].dark [data-slot="button"][data-variant="outline"]:hover {
+  background: oklch(0.72 0.2 180 / 10%);
+  box-shadow: 0 0 8px oklch(0.72 0.2 180 / 20%);
+}
+
+/* ---------- Inputs: glow on focus ---------- */
+[data-skin="tech"] [data-slot="input"],
+[data-skin="tech"] [data-slot="select-trigger"],
+[data-skin="tech"] [data-slot="textarea"] {
+  border-radius: 0.25rem;
+  box-shadow: none;
+}
+
+[data-skin="tech"] [data-slot="input"]:focus-visible,
+[data-skin="tech"] [data-slot="select-trigger"]:focus-visible,
+[data-skin="tech"] [data-slot="textarea"]:focus-visible {
+  box-shadow:
+    0 0 0 3px oklch(0.45 0.18 240 / 15%),
+    0 0 12px oklch(0.45 0.18 240 / 10%);
+}
+
+[data-skin="tech"].dark [data-slot="input"]:focus-visible,
+[data-skin="tech"].dark [data-slot="select-trigger"]:focus-visible,
+[data-skin="tech"].dark [data-slot="textarea"]:focus-visible {
+  box-shadow:
+    0 0 0 3px oklch(0.72 0.2 180 / 25%),
+    0 0 12px oklch(0.72 0.2 180 / 20%);
+  border-color: oklch(0.72 0.2 180 / 60%);
+}
+
+/* ---------- Badge: monospace ---------- */
+[data-skin="tech"] [data-slot="badge"] {
+  border-radius: 0.15rem;
+  font-family: var(--font-geist-mono), monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+}
+
+/* ---------- Sheet/Dialog: glow border (dark) ---------- */
+[data-skin="tech"] [data-slot="sheet-content"],
+[data-skin="tech"] [data-slot="dialog-content"],
+[data-skin="tech"] [data-slot="alert-dialog-content"] {
+  border-radius: 0.25rem;
+}
+
+[data-skin="tech"].dark [data-slot="sheet-content"],
+[data-skin="tech"].dark [data-slot="dialog-content"],
+[data-skin="tech"].dark [data-slot="alert-dialog-content"] {
+  border-color: oklch(0.72 0.2 180 / 30%);
+  box-shadow: 0 0 20px oklch(0.72 0.2 180 / 15%);
+  background: oklch(0.1 0.025 260 / 95%);
+  backdrop-filter: blur(12px);
+}
+
+/* ---------- Select dropdown: glow (dark) ---------- */
+[data-skin="tech"].dark [data-slot="select-content"] {
+  border-color: oklch(0.72 0.2 180 / 30%);
+  box-shadow: 0 0 12px oklch(0.72 0.2 180 / 15%);
+  background: oklch(0.12 0.025 260 / 95%);
+  backdrop-filter: blur(8px);
+}
+
+/* ---------- Bottom nav: glow top border (dark) ---------- */
+[data-skin="tech"].dark nav.fixed.bottom-0 {
+  border-top-color: oklch(0.72 0.2 180 / 30%);
+  background: oklch(0.08 0.02 260 / 90%);
+  backdrop-filter: blur(12px);
+}
+
+/* ---------- Sidebar: gradient accent line (dark) ---------- */
+[data-skin="tech"] aside {
+  position: relative;
+}
+
+[data-skin="tech"].dark aside::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    oklch(0.72 0.2 180),
+    oklch(0.65 0.25 320),
+    oklch(0.72 0.2 180)
+  );
+  box-shadow: 0 0 8px oklch(0.72 0.2 180 / 40%);
+}
+
+/* ---------- Scanning line animation ---------- */
+[data-skin="tech"] body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 9999;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(0.72 0.2 180 / 15%),
+    transparent
+  );
+  animation: tech-scan 8s linear infinite;
+}
+
+@keyframes tech-scan {
+  0% { top: -2px; }
+  100% { top: 100vh; }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  [data-skin="tech"] body::after {
+    animation: none;
+    display: none;
+  }
+}
+
+/* ---------- Page header: accent border (dark) ---------- */
+[data-skin="tech"] .sticky.border-b {
+  backdrop-filter: blur(12px);
+}
+
+[data-skin="tech"].dark .sticky.border-b {
+  border-bottom-color: oklch(0.72 0.2 180 / 20%);
+}

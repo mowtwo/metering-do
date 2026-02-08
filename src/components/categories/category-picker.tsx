@@ -40,7 +40,7 @@ export function CategoryPicker({
           <SelectTrigger>
             <SelectValue placeholder="选择分类" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent position="popper" sideOffset={4}>
             {topLevelCategories.map((cat) => (
               <SelectItem key={cat.id} value={cat.id}>
                 {cat.emoji} {cat.name}
@@ -62,7 +62,7 @@ export function CategoryPicker({
             <SelectTrigger>
               <SelectValue placeholder="选择子分类（可选）" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent position="popper" sideOffset={4}>
               {subcategories.map((sub) => (
                 <SelectItem key={sub.id} value={sub.id}>
                   {sub.emoji} {sub.name}

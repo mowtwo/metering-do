@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, ZCOOL_KuaiLe } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+import { SkinProvider } from "@/components/skin-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,6 +12,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const comicFont = ZCOOL_KuaiLe({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-comic",
 });
 
 export const metadata: Metadata = {
@@ -25,18 +32,23 @@ export const viewport: Viewport = {
   themeColor: "#0f172a",
 };
 
+const skinInitScript = `(function(){try{var s=localStorage.getItem('metering-do-skin');if(s==='p5'||s==='tech'||s==='minimal'){document.documentElement.setAttribute('data-skin',s)}else{document.documentElement.setAttribute('data-skin','minimal')}}catch(e){}})()`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${comicFont.variable} antialiased`}
       >
-        {children}
-        <Toaster />
+        <script dangerouslySetInnerHTML={{ __html: skinInitScript }} />
+        <SkinProvider>
+          {children}
+          <Toaster />
+        </SkinProvider>
       </body>
     </html>
   );

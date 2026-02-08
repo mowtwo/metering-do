@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, lazy, Suspense } from "react";
+import { useState, lazy, Suspense, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -15,7 +15,10 @@ interface EmojiPickerWrapperProps {
   onChange: (emoji: string) => void;
 }
 
-export function EmojiPickerWrapper({ value, onChange }: EmojiPickerWrapperProps) {
+export function EmojiPickerWrapper({
+  value,
+  onChange,
+}: EmojiPickerWrapperProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -29,10 +32,17 @@ export function EmojiPickerWrapper({ value, onChange }: EmojiPickerWrapperProps)
           {value || "😀"}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0 border-0" align="start">
+      <PopoverContent
+        className="w-[min(352px,calc(100vw-2rem))] p-0 border-0"
+        align="start"
+        side="bottom"
+        avoidCollisions
+        collisionPadding={16}
+        onOpenAutoFocus={(e) => e.preventDefault()}
+      >
         <Suspense
           fallback={
-            <div className="flex h-[350px] w-[352px] items-center justify-center">
+            <div className="flex h-[350px] w-full max-w-[352px] items-center justify-center">
               加载中...
             </div>
           }
@@ -49,13 +59,23 @@ export function EmojiPickerWrapper({ value, onChange }: EmojiPickerWrapperProps)
   );
 }
 
-function EmojiPickerInner({ onSelect }: { onSelect: (emoji: string) => void }) {
+function EmojiPickerInner({
+  onSelect,
+}: {
+  onSelect: (emoji: string) => void;
+}) {
   const [data, setData] = useState<unknown>(null);
+  const [perLine, setPerLine] = useState(9);
+
+  useEffect(() => {
+    const width = Math.min(352, window.innerWidth - 32);
+    setPerLine(Math.max(6, Math.floor((width - 24) / 36)));
+  }, []);
 
   if (!data) {
     import("@emoji-mart/data").then((mod) => setData(mod.default));
     return (
-      <div className="flex h-[350px] w-[352px] items-center justify-center">
+      <div className="flex h-[350px] w-full max-w-[352px] items-center justify-center">
         加载中...
       </div>
     );
@@ -69,6 +89,7 @@ function EmojiPickerInner({ onSelect }: { onSelect: (emoji: string) => void }) {
       theme="light"
       previewPosition="none"
       skinTonePosition="none"
+      perLine={perLine}
     />
   );
 }

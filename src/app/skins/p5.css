@@ -1,0 +1,197 @@
+/* ====== P5 / COMIC SKIN ====== */
+/* Persona 5 inspired: bold borders, hard shadows, pop art colors, comic feel */
+
+/* ---------- Light mode variables ---------- */
+[data-skin="p5"] {
+  --radius: 0.25rem;
+  --background: oklch(0.98 0.005 0);
+  --foreground: oklch(0.1 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.1 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.1 0 0);
+  --primary: oklch(0.55 0.25 27);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.01 85);
+  --secondary-foreground: oklch(0.1 0 0);
+  --muted: oklch(0.94 0.005 0);
+  --muted-foreground: oklch(0.4 0 0);
+  --accent: oklch(0.55 0.25 27);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.45 0.3 30);
+  --border: oklch(0.15 0 0);
+  --input: oklch(0.15 0 0);
+  --ring: oklch(0.55 0.25 27);
+  --sidebar: oklch(0.98 0.005 0);
+  --sidebar-foreground: oklch(0.1 0 0);
+  --sidebar-primary: oklch(0.55 0.25 27);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.55 0.25 27 / 8%);
+  --sidebar-accent-foreground: oklch(0.1 0 0);
+  --sidebar-border: oklch(0.15 0 0);
+}
+
+/* ---------- Dark mode variables ---------- */
+/* data-skin and .dark are both on <html>, so use compound selector */
+[data-skin="p5"].dark {
+  --background: oklch(0.12 0.01 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.15 0.01 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.15 0.01 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.6 0.27 27);
+  --primary-foreground: oklch(0.05 0 0);
+  --secondary: oklch(0.22 0.01 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.22 0.005 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.6 0.27 27);
+  --accent-foreground: oklch(0.05 0 0);
+  --destructive: oklch(0.6 0.25 25);
+  --border: oklch(0.8 0 0);
+  --input: oklch(0.8 0 0);
+  --ring: oklch(0.6 0.27 27);
+}
+
+/* ---------- Comic font for headings ---------- */
+[data-skin="p5"] h1,
+[data-skin="p5"] [data-slot="card-title"],
+[data-skin="p5"] [data-slot="sheet-title"],
+[data-skin="p5"] [data-slot="dialog-title"],
+[data-skin="p5"] [data-slot="alert-dialog-title"] {
+  font-family: var(--font-comic), var(--font-geist-sans), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Cards: thick border + hard shadow ---------- */
+[data-skin="p5"] [data-slot="card"] {
+  border: 3px solid oklch(0.15 0 0);
+  box-shadow: 4px 4px 0px oklch(0.15 0 0);
+  border-radius: 0.25rem;
+  transform: rotate(-0.3deg);
+}
+
+[data-skin="p5"].dark [data-slot="card"] {
+  border-color: oklch(0.8 0 0);
+  box-shadow: 4px 4px 0px oklch(0.8 0 0);
+}
+
+/* ---------- Buttons: thick border + hard shadow ---------- */
+[data-skin="p5"] [data-slot="button"] {
+  border: 2px solid oklch(0.15 0 0);
+  box-shadow: 3px 3px 0px oklch(0.15 0 0);
+  border-radius: 0.25rem;
+  font-weight: 800;
+  font-family: var(--font-comic), var(--font-geist-sans), sans-serif;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+[data-skin="p5"] [data-slot="button"]:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px oklch(0.15 0 0);
+}
+
+[data-skin="p5"].dark [data-slot="button"] {
+  border-color: oklch(0.8 0 0);
+  box-shadow: 3px 3px 0px oklch(0.8 0 0);
+}
+
+[data-skin="p5"].dark [data-slot="button"]:active {
+  box-shadow: 1px 1px 0px oklch(0.8 0 0);
+}
+
+/* Ghost/link buttons: no thick border */
+[data-skin="p5"] [data-slot="button"][data-variant="ghost"],
+[data-skin="p5"] [data-slot="button"][data-variant="link"] {
+  border: none;
+  box-shadow: none;
+}
+
+[data-skin="p5"] [data-slot="button"][data-variant="ghost"]:active,
+[data-skin="p5"] [data-slot="button"][data-variant="link"]:active {
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- Inputs: thick border ---------- */
+[data-skin="p5"] [data-slot="input"],
+[data-skin="p5"] [data-slot="select-trigger"],
+[data-skin="p5"] [data-slot="textarea"] {
+  border: 2px solid oklch(0.15 0 0);
+  border-radius: 0.25rem;
+  box-shadow: none;
+}
+
+[data-skin="p5"].dark [data-slot="input"],
+[data-skin="p5"].dark [data-slot="select-trigger"],
+[data-skin="p5"].dark [data-slot="textarea"] {
+  border-color: oklch(0.8 0 0);
+}
+
+/* ---------- Badge: angular, bold ---------- */
+[data-skin="p5"] [data-slot="badge"] {
+  border-radius: 0.15rem;
+  border: 2px solid oklch(0.15 0 0);
+  font-weight: 800;
+  font-family: var(--font-comic), var(--font-geist-sans), sans-serif;
+}
+
+/* ---------- Sheet: thick border + hard shadow ---------- */
+[data-skin="p5"] [data-slot="sheet-content"] {
+  border-width: 3px;
+  border-color: oklch(0.15 0 0);
+  box-shadow: 0 -4px 0 oklch(0.15 0 0);
+}
+
+/* ---------- Dialog: thick border + hard shadow ---------- */
+[data-skin="p5"] [data-slot="dialog-content"],
+[data-skin="p5"] [data-slot="alert-dialog-content"] {
+  border: 3px solid oklch(0.15 0 0);
+  box-shadow: 6px 6px 0px oklch(0.15 0 0);
+  border-radius: 0.25rem;
+}
+
+/* ---------- Select dropdown: thick border ---------- */
+[data-skin="p5"] [data-slot="select-content"] {
+  border: 2px solid oklch(0.15 0 0);
+  box-shadow: 3px 3px 0px oklch(0.15 0 0);
+  border-radius: 0.25rem;
+}
+
+/* ---------- Popover: thick border ---------- */
+[data-skin="p5"] [data-slot="popover-content"] {
+  border: 2px solid oklch(0.15 0 0);
+  box-shadow: 3px 3px 0px oklch(0.15 0 0);
+  border-radius: 0.25rem;
+}
+
+/* ---------- Halftone dot pattern background ---------- */
+[data-skin="p5"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: radial-gradient(circle, oklch(0.15 0 0) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* ---------- Sidebar: diagonal stripe accent ---------- */
+[data-skin="p5"] aside {
+  border-right: 3px solid oklch(0.15 0 0);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    oklch(0.55 0.25 27 / 5%) 10px,
+    oklch(0.55 0.25 27 / 5%) 11px
+  );
+}
+
+/* ---------- Bottom nav: thick top border ---------- */
+[data-skin="p5"] nav.fixed.bottom-0 {
+  border-top: 3px solid oklch(0.15 0 0);
+}

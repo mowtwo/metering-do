@@ -1,0 +1,58 @@
+/* ====== MINIMAL SKIN ====== */
+/* Clean, practical aesthetic: no shadows, thin borders, tight radius */
+
+[data-skin="minimal"] {
+  --radius: 0.5rem;
+}
+
+/* Cards: no shadow, rely on border only */
+[data-skin="minimal"] [data-slot="card"] {
+  box-shadow: none;
+}
+
+/* Inputs & select triggers: no shadow */
+[data-skin="minimal"] [data-slot="input"],
+[data-skin="minimal"] [data-slot="select-trigger"],
+[data-skin="minimal"] [data-slot="textarea"] {
+  box-shadow: none;
+}
+
+/* Buttons: no shadow */
+[data-skin="minimal"] [data-slot="button"] {
+  box-shadow: none;
+}
+
+/* Sheet content: no shadow, clean border */
+[data-skin="minimal"] [data-slot="sheet-content"] {
+  box-shadow: none;
+}
+
+/* Dialog content: no shadow */
+[data-skin="minimal"] [data-slot="dialog-content"] {
+  box-shadow: none;
+}
+
+/* Popover: extremely subtle shadow */
+[data-skin="minimal"] [data-slot="popover-content"] {
+  box-shadow: 0 1px 3px oklch(0 0 0 / 5%);
+}
+
+/* Select dropdown: minimal shadow */
+[data-skin="minimal"] [data-slot="select-content"] {
+  box-shadow: 0 1px 3px oklch(0 0 0 / 5%);
+}
+
+/* Badge: no shadow */
+[data-skin="minimal"] [data-slot="badge"] {
+  box-shadow: none;
+}
+
+/* Dropdown menu: minimal shadow */
+[data-skin="minimal"] [data-slot="dropdown-menu-content"] {
+  box-shadow: 0 1px 3px oklch(0 0 0 / 5%);
+}
+
+/* Alert dialog: no shadow */
+[data-skin="minimal"] [data-slot="alert-dialog-content"] {
+  box-shadow: none;
+}

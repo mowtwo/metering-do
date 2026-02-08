@@ -131,7 +131,7 @@ export function ExpenseForm({
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent position="popper" sideOffset={4}>
                   {availableTypes.map(([key, label]) => (
                     <SelectItem key={key} value={key}>
                       {label}
@@ -196,7 +196,7 @@ export function ExpenseForm({
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent position="popper" sideOffset={4}>
                     {Object.entries(RECURRING_INTERVAL_LABELS).map(
                       ([key, label]) => (
                         <SelectItem key={key} value={key}>

@@ -44,6 +44,8 @@ export function ImportDialog() {
       toast.success(
         `导入成功：${result.categories} 个分类，${result.assets} 个资产，${result.expenses} 条费用记录`
       );
+      // Reload to apply imported skin preference
+      setTimeout(() => window.location.reload(), 500);
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "导入失败");
     } finally {

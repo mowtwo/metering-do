@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { ExportButton } from "@/components/data/export-button";
 import { ImportDialog } from "@/components/data/import-dialog";
+import { SkinPicker } from "@/components/settings/skin-picker";
 import { db } from "@/lib/db";
 import { toast } from "sonner";
 
@@ -48,6 +49,8 @@ export default function SettingsPage() {
             <ImportDialog />
           </CardContent>
         </Card>
+
+        <SkinPicker />
 
         <Card>
           <CardHeader>
