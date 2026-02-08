@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { NavBar } from "./nav-bar";
 import { DbInitializer } from "@/components/db-initializer";
 
@@ -44,8 +45,9 @@ function DesktopNav() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex h-14 items-center border-b px-4">
-        <span className="text-lg font-bold">📊 Metering-Do</span>
+      <div className="flex h-14 items-center gap-2.5 border-b px-4">
+        <Image src="/icon.svg" alt="Metering Do" width={32} height={32} className="shrink-0 rounded-md" />
+        <span className="text-base font-bold tracking-tight">Metering Do</span>
       </div>
       <nav className="flex-1 space-y-1 p-3">
         {navItems.map((item) => {

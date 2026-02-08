@@ -57,7 +57,7 @@ export default function SettingsPage() {
             <CardTitle className="text-base">关于</CardTitle>
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground space-y-1">
-            <p>Metering-Do 个人资产费用追踪</p>
+            <p>Metering Do 个人资产费用追踪</p>
             <p>所有数据存储在浏览器本地 (IndexedDB)</p>
             <p>版本 1.0.0</p>
           </CardContent>

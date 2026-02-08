@@ -21,7 +21,7 @@ const comicFont = ZCOOL_KuaiLe({
 });
 
 export const metadata: Metadata = {
-  title: "Metering-Do",
+  title: "Metering Do",
   description: "个人资产费用追踪",
 };
 
